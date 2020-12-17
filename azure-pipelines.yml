@@ -1,0 +1,29 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+# see https://docs.microsoft.com/en-us/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#secret-variables
+variables:
+  AQUA_KEY: $(aquaKey)
+  AQUA_SECRET: $(aquaSecret)
+
+jobs:
+- job: A
+  steps:
+  - task: tfsec@1
+- job: B
+  steps:
+  - task: trivy@1
+    #displayName: vulnerabilities
+    inputs:
+      image: liamg/thisisfine
+      aquaKey: $(AQUA_KEY)
+      #aquaSecret: $(AQUA_SECRET)
+      #devMode: True
