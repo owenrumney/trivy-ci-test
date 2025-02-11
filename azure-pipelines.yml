@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  name: Default
+  name: Linux
 
 jobs:
 - job: scan_local_project
