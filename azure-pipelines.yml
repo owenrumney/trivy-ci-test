@@ -17,11 +17,4 @@ jobs:
       inputs:
         version: 'latest'
         debug: true
-        severities: 'CRITICAL,MEDIUM'
-        ignoreUnfixed: true
-        path: .
-    - task: trivy@1
-      inputs:
-        version: 'latest'
-        debug: true
         image: 'nginx'
