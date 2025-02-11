@@ -25,3 +25,4 @@ jobs:
       inputs:
         version: 'latest'
         path: .
+        docker: false
