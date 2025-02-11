@@ -18,3 +18,7 @@ jobs:
         version: 'latest'
         debug: true
         image: 'nginx'
+    - task: trivy@1
+      inputs:
+        version: 'latest'
+        path: .
