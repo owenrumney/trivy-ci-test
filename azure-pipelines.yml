@@ -18,6 +18,7 @@ jobs:
         debug: true
         severities: 'CRITICAL,MEDIUM'
         ignoreUnfixed: true
+        path: .
 
 - job: scan_nginx
   steps:
