@@ -10,13 +10,13 @@ pool:
   vmImage: ubuntu-latest
 
 jobs:
-- job: Scan local project
+- job: scan_local_project
   steps:
     - task: trivy@1
       inputs:
         path: .
 
-- job: Scan the ubuntu image
+- job: scan_nginx
   steps:
   - task: trivy@1
     inputs:
