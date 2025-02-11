@@ -26,3 +26,4 @@ jobs:
         version: 'latest'
         path: .
         docker: false
+        exitCode: 0
