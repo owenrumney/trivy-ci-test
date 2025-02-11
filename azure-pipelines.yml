@@ -11,13 +11,16 @@ pool:
   name: Linux
 
 jobs:
-- job: scan_local_project
+- job: scan_image
   steps:
     - task: trivy@1
       inputs:
         version: 'latest'
         debug: true
         image: 'nginx'
+
+- job: scan_local_project
+  steps:
     - task: trivy@1
       inputs:
         version: 'latest'
