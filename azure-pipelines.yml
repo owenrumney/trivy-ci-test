@@ -10,6 +10,9 @@ trigger: none
 pool:
   name: Linux
 
+variables:
+  SYSTEM_DEBUG: true
+
 jobs:
 - job: scan_image
   steps:
