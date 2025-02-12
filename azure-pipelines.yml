@@ -21,6 +21,8 @@ jobs:
         version: 'latest'
         debug: true
         image: 'nginx'
+        sarifOutput: true
+        cosignOutput: true
 
 - job: scan_local_project
   steps:
