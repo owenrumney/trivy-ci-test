@@ -21,7 +21,6 @@ jobs:
         version: 'latest'
         debug: true
         image: 'nginx'
-        csvOutput: true
         sarifOutput: true
 
 - job: scan_local_project
