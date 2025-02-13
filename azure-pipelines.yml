@@ -29,5 +29,6 @@ jobs:
         docker: false
         version: 'latest'
         exitCode: '0'
-        sarifOutput: true
+        path: '.'
         cosignOutput: true
+        sarifOutput: true
