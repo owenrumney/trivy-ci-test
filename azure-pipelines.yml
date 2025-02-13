@@ -23,6 +23,14 @@ jobs:
         image: 'nginx'
         sarifOutput: true
 
+- job: scan_another_image
+  steps:
+    - task: trivy@1
+      inputs:
+        version: 'latest'
+        debug: true
+        image: 'niginx'
+
 - job: scan_local_project
   steps:
     - task: trivy@1
