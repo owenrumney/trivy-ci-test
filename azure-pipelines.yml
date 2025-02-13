@@ -21,23 +21,13 @@ jobs:
         version: 'latest'
         debug: true
         image: 'nginx'
-        sarifOutput: true
-
-- job: scan_another_image
-  steps:
-    - task: trivy@1
-      inputs:
-        version: 'latest'
-        debug: true
-        image: 'nginx'
 
 - job: scan_local_project
   steps:
     - task: trivy@1
       inputs:
-        version: 'latest'
-        path: .
         docker: false
-        exitCode: 0
+        version: 'latest'
+        exitCode: '0'
         sarifOutput: true
         cosignOutput: true
