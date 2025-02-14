@@ -8,7 +8,7 @@ trigger: none
 
 
 pool:
-  name: Default
+  name: Linux
 
 variables:
   SYSTEM_DEBUG: true
