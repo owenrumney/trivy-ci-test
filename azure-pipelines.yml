@@ -32,3 +32,14 @@ jobs:
         path: '.'
         cosignOutput: true
         sarifOutput: true
+
+- job: scan_local_project_again
+  steps:
+    - task: trivy@1
+      inputs:
+        docker: false
+        version: 'v0.59.0'
+        exitCode: '1'
+        path: '.'
+        cosignOutput: true
+        jsonOutput: true
