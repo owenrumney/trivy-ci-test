@@ -21,6 +21,7 @@ jobs:
         version: 'latest'
         debug: true
         image: 'nginx'
+        jsonOutput: true
 
 - job: scan_local_project
   steps:
