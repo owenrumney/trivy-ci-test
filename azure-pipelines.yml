@@ -8,7 +8,7 @@ trigger: none
 
 
 pool:
-  name: Linux
+  vmImage: ubuntu-latest
 
 variables:
   SYSTEM_DEBUG: true
