@@ -38,7 +38,7 @@ jobs:
       severities: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
       exitCode: '0'
       ignoreUnfixed: true
-      options: '--vuln-type library --timeout 5m'
+      options: '--pkg-types library --timeout 5m'
 
 - job: scan_local_project_again
   steps:
