@@ -18,7 +18,7 @@ jobs:
   steps:
     - task: trivy@1
       inputs:
-        version: 'latest'
+        version: 'v1.58.0'
         debug: true
         image: 'nginx'
         jsonOutput: true
