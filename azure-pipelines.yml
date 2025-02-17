@@ -23,6 +23,7 @@ jobs:
         image: 'nginx'
         severities: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
         ignoreUnfixed: true
+        sarifOutput: true
         options: '--vuln-type os --timeout 5m'
 
 - job: scan_local_project
