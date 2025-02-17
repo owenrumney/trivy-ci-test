@@ -7,8 +7,7 @@
 trigger: none
 
 
-pool:
-  vmImage: ubuntu-22.04
+pool: Linux
 
 variables:
   SYSTEM_DEBUG: true
