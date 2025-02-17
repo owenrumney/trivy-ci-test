@@ -19,10 +19,9 @@ jobs:
       displayName: 'Container Image Scan'
       inputs:
         version: 'v0.59.0'
-        docker: false
+        exitCode: '0'
         image: 'nginx'
         severities: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
-        exitCode: '0'
         ignoreUnfixed: true
         options: '--vuln-type os --timeout 5m'
 
