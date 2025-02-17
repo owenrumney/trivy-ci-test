@@ -33,7 +33,7 @@ jobs:
     inputs:
       version: 'v0.59.0'
       docker: false
-      path: '$(workdir)'
+      path: '.'
       severities: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
       exitCode: '0'
       ignoreUnfixed: true
