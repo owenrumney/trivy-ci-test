@@ -18,7 +18,7 @@ jobs:
     - task: trivy@1
       displayName: 'Container Image Scan'
       inputs:
-        overrideDockerImage: true
+        dockerImage: 'aquasec/trivy:058.2'
         version: 'v0.59.0'
         exitCode: '0'
         image: 'nginx'
