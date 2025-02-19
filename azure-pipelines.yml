@@ -19,7 +19,6 @@ jobs:
       displayName: 'Container Image Scan'
       inputs:
         dockerImage: 'aquasec/trivy:058.2'
-        version: 'v0.59.0'
         exitCode: '0'
         image: 'nginx'
         severities: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
