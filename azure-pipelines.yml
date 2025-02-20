@@ -36,6 +36,7 @@ jobs:
         version: 'latest'
         exitCode: '0'
         image: 'nginx'
+        scanners: 'vuln,misconfig,secret,license'
         severities: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
         ignoreUnfixed: true
         sarifOutput: true
@@ -52,7 +53,7 @@ jobs:
       severities: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
       exitCode: '0'
       ignoreUnfixed: true
-      options: '--pkg-types library --timeout 5m'
+      options: '--pkg-types library --timeout 5m --license-full'
 
 - job: scan_local_project_again
   steps:
