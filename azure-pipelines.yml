@@ -26,7 +26,7 @@ jobs:
         severities: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
         ignoreUnfixed: true
         sarifOutput: true
-        options: '--vuln-type os --timeout 5m --license-full'
+        options: '--vuln-type os --timeout 5m'
 
 - job: scan_image_2
   steps:
@@ -47,13 +47,13 @@ jobs:
   - task: trivy@1
     displayName: 'scan dependencies'
     inputs:
-      version: 'v0.59.0'
       docker: false
-      path: '.'
-      severities: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
+      version: 'v0.59.0'
       exitCode: '0'
+      scanners: 'vuln,misconfig,secret,license'
+      severities: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
       ignoreUnfixed: true
-      options: '--pkg-types library --timeout 5m --license-full'
+      options: '--pkg-types library --timeout 5m'
 
 - job: scan_local_project_again
   steps:
