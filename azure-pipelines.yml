@@ -19,13 +19,10 @@ jobs:
       displayName: 'Scan nginx for vulnerabilities and license issues'
       inputs:
         version: 'latest'
-        devMode: true
         image: 'nginx'
         scanners: 'vuln,license'
         severities: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
         ignoreUnfixed: true
-        aquaKey: '$(AQUA_KEY)'
-        aquaSecret: '$(AQUA_SECRET)'
         jsonOutput: true
         sarifOutput: true
 
@@ -42,4 +39,7 @@ jobs:
       severities: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
       ignoreUnfixed: true
       options: '--pkg-types library --timeout 5m'
+      devMode: true
+      aquaKey: '$(AQUA_KEY)'
+      aquaSecret: '$(AQUA_SECRET)'
 
