@@ -35,7 +35,7 @@ jobs:
       version: 'v0.59.0'
       type: 'filesystem'
       path: '.'
-      scanners: 'vuln,misconfig,secrets,license'
+      scanners: 'vuln,misconfig,secret,license'
       severities: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
       ignoreUnfixed: true
       options: '--pkg-types library --timeout 5m'
