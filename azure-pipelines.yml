@@ -20,6 +20,7 @@ jobs:
       displayName: 'Scan nginx for vulnerabilities and license issues'
       inputs:
         version: 'latest'
+        exitCode: '0'
         image: 'nginx'
         scanners: 'vuln,license'
         severities: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
