@@ -28,7 +28,7 @@ jobs:
     - task: trivy@1
       displayName: 'Scan project for everything'
       inputs:
-        docker: false
+        docker: true
         version: 'v0.59.0'
         type: 'filesystem'
         path: '.'
