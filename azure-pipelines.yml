@@ -26,7 +26,7 @@ jobs:
         severities: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
         ignoreUnfixed: true
         sarifOutput: true
-        options: '--vuln-type os --timeout 5m --license-full'
+        options: '--vuln-type os --timeout 5m'
 
 - job: scan_image_2
   steps:
@@ -53,7 +53,7 @@ jobs:
       severities: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
       exitCode: '0'
       ignoreUnfixed: true
-      options: '--pkg-types library --timeout 5m --license-full'
+      options: '--pkg-types library --timeout 5m'
 
 - job: scan_local_project_again
   steps:
