@@ -22,6 +22,7 @@ jobs:
         version: 'latest'
         exitCode: '0'
         image: 'nginx'
+        scanners: 'vuln,misconfig,secret,license'
         severities: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
         ignoreUnfixed: true
         sarifOutput: true
@@ -40,26 +41,26 @@ jobs:
         sarifOutput: true
         options: '--vuln-type os --timeout 5m'
 
-# - job: scan_local_project
-#   steps:
-#   - task: trivy@1
-#     displayName: 'scan dependencies'
-#     inputs:
-#       version: 'v0.59.0'
-#       docker: false
-#       path: '.'
-#       severities: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
-#       exitCode: '0'
-#       ignoreUnfixed: true
-#       options: '--pkg-types library --timeout 5m'
+- job: scan_local_project
+  steps:
+  - task: trivy@1
+    displayName: 'scan dependencies'
+    inputs:
+      version: 'v0.59.0'
+      docker: false
+      path: '.'
+      severities: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
+      exitCode: '0'
+      ignoreUnfixed: true
+      options: '--pkg-types library --timeout 5m'
 
-# - job: scan_local_project_again
-#   steps:
-#     - task: trivy@1
-#       inputs:
-#         docker: false
-#         version: 'v0.59.0'
-#         exitCode: '1'
-#         path: '.'
-#         cosignOutput: true
-#         jsonOutput: true
+- job: scan_local_project_again
+  steps:
+    - task: trivy@1
+      inputs:
+        docker: false
+        version: 'v0.59.0'
+        exitCode: '1'
+        path: '.'
+        cosignOutput: true
+        jsonOutput: true
