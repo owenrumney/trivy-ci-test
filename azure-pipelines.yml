@@ -26,7 +26,7 @@ jobs:
         severities: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
         ignoreUnfixed: true
         sarifOutput: true
-        options: '--vuln-type os --timeout 5m'
+        options: '--vuln-type os --timeout 5m --license-full'
 
 - job: scan_image_2
   steps:
