@@ -16,6 +16,7 @@ jobs:
 - job: scan_image
   steps:
     - task: trivy@1
+      name: trivy_nginx
       displayName: 'Scan nginx for vulnerabilities and license issues'
       inputs:
         version: 'latest'
@@ -25,6 +26,9 @@ jobs:
         ignoreUnfixed: true
         jsonOutput: true
         sarifOutput: true
+    - task: CmdLine@2
+      inputs:
+        script: 'echo $(trivy_nginx.jsonReport)'
 
 - job: scan_local_project
   steps:
