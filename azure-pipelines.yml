@@ -28,6 +28,7 @@ jobs:
         jsonOutput: true
         sarifOutput: true
     - task: CmdLine@2
+      name: prove_output_var
       inputs:
         script: 'echo $(trivy_nginx.jsonReport)'
 
