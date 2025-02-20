@@ -35,7 +35,7 @@ jobs:
         severities: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
         ignoreUnfixed: true
         options: '--ignorefile .trivyignore  --db-repository ghcr.io/aquasecurity/trivy-db:2,public.ecr.aws/aquasecurity/trivy-db:2 --java-db-repository ghcr.io/aquasecurity/trivy-java-db:1,public.ecr.aws/aquasecurity/trivy-java-db:1'
-        # devMode: true
-        # aquaKey: '$(AQUA_KEY)'
-        # aquaSecret: '$(AQUA_SECRET)'
+        devMode: true
+        aquaKey: '$(AQUA_KEY)'
+        aquaSecret: '$(AQUA_SECRET)'
 
