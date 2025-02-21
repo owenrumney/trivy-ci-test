@@ -4,7 +4,7 @@ trigger: none
 pool: Linux
 
 jobs:
-- job:
+- job: hello_world
   steps:
     - task: trivy@1
       name: hello_world
@@ -12,7 +12,7 @@ jobs:
       inputs:
         image: hello-world
 
-- job:
+- job: nginx
   steps:
     - task: trivy@1
       name: nginx
