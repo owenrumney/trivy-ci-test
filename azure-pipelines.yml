@@ -18,7 +18,9 @@ jobs:
       name: nginx
       displayName: Check nginx
       inputs:
-        image: nginx
+        version: 'latest'
+        image: 'nginx'
+        spdxjsonOutput: true
         
 # - job: scan_image
 #   steps:
