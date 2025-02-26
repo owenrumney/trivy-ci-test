@@ -1,0 +1,21 @@
+# set the trigger to none so that it only runs manually
+trigger: none
+
+pool: Linux
+
+jobs:
+- job: scan_local_project
+  steps:
+    - task: trivy@1
+      displayName: 'Scan project for everything'
+      inputs:
+        version: 'v0.59.0'
+        type: 'filesystem'
+        path: '.'
+        scanners: 'vuln,misconfig,secret,license'
+        severities: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
+        ignoreUnfixed: true
+        options: '--ignorefile .trivyignore  --db-repository ghcr.io/aquasecurity/trivy-db:2,public.ecr.aws/aquasecurity/trivy-db:2 --java-db-repository ghcr.io/aquasecurity/trivy-java-db:1,public.ecr.aws/aquasecurity/trivy-java-db:1'
+        devMode: true
+        aquaKey: '$(AQUA_KEY)'
+        aquaSecret: '$(AQUA_SECRET)'
