@@ -1,0 +1,75 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger: none
+
+
+pool: Linux 
+
+parameters:
+  - name: images
+    type: object
+    default: 
+        - registry: "docker.io"
+          repo: "grafana"
+          name: "loki-canary"
+          tag: "3.4.2"
+        - registry: "docker.io"
+          repo: "grafana"
+          name: "loki"
+          tag: "3.4.2"
+        - registry: "docker.io"
+          repo: "nginxinc"
+          name: "nginx-unprivileged"
+          tag: "1.27-alpine"
+        - registry: "quay.io"
+          repo: "minio"
+          name: "minio"
+          tag: "RELEASE.2025-02-18T16-25-55Z"
+        - registry: docker.io
+          repo: prom
+          name: memcached-exporter
+          tag: v0.15.0
+        - registry: "docker.io"
+          repo: "grafana"
+          name: "loki-helm-test"
+          tag: "ewelch-distributed-helm-chart-17db5ee"
+        - registry: "quay.io"
+          repo: "minio"
+          name: "mc"
+          tag: "RELEASE.2025-02-15T10-36-16Z"
+          
+
+stages:
+- stage: cicd_docker
+  displayName: CI CD Docker Images
+  jobs:
+  - deployment: docker_pull_push
+    displayName: Docker Pull & Push Chart
+    environment: demo
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - ${{ each value in parameters.images }}:
+            - task: Bash@3
+              displayName: Docker pull ${{ value.name }}
+              inputs:
+                targetType: 'inline'
+                script: |
+                    registry="${{ value.registry }}"
+                    repo="${{ value.repo }}"
+                    tag="${{ value.tag }}"
+                    name="${{ value.name }}"
+
+                    docker pull $registry/$repo/$name:$tag
+
+            - task: trivy@1
+              displayName: Container Scan ${{ value.name }}
+              continueOnError: true
+              inputs:
+                version: 'latest'
+                image: '${{ value.registry}}/${{ value.repo }}/${{ value.name }}:${{ value.tag }}'
+                severities: 'CRITICAL,HIGH' 
