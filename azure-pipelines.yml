@@ -30,3 +30,14 @@ jobs:
     inputs:
       version: 'latest'
       image: 'nginx'
+
+- job: use_binary
+  steps:
+  - task: trivy@1
+    displayName: 'Trivy Scan'
+    inputs:
+      version: 'latest'
+      docker: false
+      path: '.'
+      exitCode: 0
+      options: '--scanners vuln,misconfig --db-repository ghcr.io/aquasecurity/trivy-db:2,aquasec/trivy-db:2'
