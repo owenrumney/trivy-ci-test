@@ -15,7 +15,7 @@ variables:
 jobs:
 - job: scan_hello
   steps:
-  - task: trivy@1
+  - task: trivy-dev@1
     name: scan_hello_world
     displayName: Scan Hello World
     inputs:
@@ -24,7 +24,7 @@ jobs:
 
 - job: scan_nginx
   steps:
-  - task: trivy@1
+  - task: trivy-dev@1
     name: scan_nginx
     displayName: Scan NGINX
     inputs:
@@ -33,7 +33,7 @@ jobs:
 
 - job: use_binary
   steps:
-  - task: trivy@1
+  - task: trivy-dev@1
     displayName: 'Trivy Scan'
     inputs:
       version: 'latest'
