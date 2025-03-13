@@ -28,6 +28,7 @@ jobs:
     inputs:
       version: 'latest'
       image: 'nginx'
+      sarifOutput: true
 
 - job: use_binary
   steps:
