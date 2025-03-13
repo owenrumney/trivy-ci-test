@@ -13,7 +13,7 @@ variables:
   SYSTEM_DEBUG: true
 
 jobs:
-- job: scan_hello
+- job: scan_multiple
   steps:
   - task: trivy-dev@1
     name: scan_hello_world
@@ -21,9 +21,6 @@ jobs:
     inputs:
       version: 'latest'
       image: 'hello-world'
-
-- job: scan_nginx
-  steps:
   - task: trivy-dev@1
     name: scan_nginx
     displayName: Scan NGINX
