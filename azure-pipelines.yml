@@ -21,6 +21,7 @@ jobs:
     inputs:
       version: 'latest'
       image: 'hello-world'
+      sarifOutput: true
   - task: trivy-dev@1
     name: scan_nginx
     displayName: Scan NGINX
