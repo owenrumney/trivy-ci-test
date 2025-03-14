@@ -22,6 +22,7 @@ jobs:
       version: 'latest'
       image: 'hello-world'
       sarifOutput: true
+      spdxjsonOutput: true
   - task: trivy-dev@1
     name: scan_nginx
     displayName: Scan NGINX
