@@ -36,8 +36,11 @@ jobs:
   - task: trivy-dev@1
     displayName: 'Trivy Scan'
     inputs:
-      version: 'latest'
       docker: false
-      path: '.'
-      exitCode: 0
+      version: 'latest'
+      exitCode: '0'
+      cosignOutput: true
+      sarifOutput: true
+      spdxOutput: true
+      spdxjsonOutput: true
       options: '--scanners vuln,misconfig --db-repository ghcr.io/aquasecurity/trivy-db:2,aquasec/trivy-db:2'
