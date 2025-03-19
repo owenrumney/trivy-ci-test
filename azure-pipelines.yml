@@ -13,23 +13,23 @@ variables:
   SYSTEM_DEBUG: true
 
 jobs:
-- job: scan_multiple
-  steps:
-  - task: trivy-dev@1
-    name: scan_hello_world
-    displayName: Scan Hello World
-    inputs:
-      version: 'latest'
-      image: 'hello-world'
-      sarifOutput: true
-      spdxjsonOutput: true
-  - task: trivy-dev@1
-    name: scan_nginx
-    displayName: Scan NGINX
-    inputs:
-      version: 'latest'
-      image: 'nginx'
-      sarifOutput: true
+# - job: scan_multiple
+#   steps:
+#   - task: trivy-dev@1
+#     name: scan_hello_world
+#     displayName: Scan Hello World
+#     inputs:
+#       version: 'latest'
+#       image: 'hello-world'
+#       sarifOutput: true
+#       spdxjsonOutput: true
+#   - task: trivy-dev@1
+#     name: scan_nginx
+#     displayName: Scan NGINX
+#     inputs:
+#       version: 'latest'
+#       image: 'nginx'
+#       sarifOutput: true
 
 - job: use_binary
   steps:
@@ -43,4 +43,5 @@ jobs:
       sarifOutput: true
       spdxOutput: true
       spdxjsonOutput: true
+      path: .
       options: '--scanners vuln,misconfig --db-repository ghcr.io/aquasecurity/trivy-db:2,aquasec/trivy-db:2'
