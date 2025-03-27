@@ -33,15 +33,14 @@ jobs:
 
 - job: use_binary
   steps:
-  - task: trivy-dev@1
-    displayName: 'Trivy Scan'
+  - task: trivy-dev@2
     inputs:
-      docker: false
-      version: 'latest'
-      exitCode: '0'
-      cosignOutput: true
-      sarifOutput: true
-      spdxOutput: true
-      spdxjsonOutput: true
-      path: .
-      options: '--scanners vuln,misconfig --db-repository ghcr.io/aquasecurity/trivy-db:2,aquasec/trivy-db:2'
+        method: 'docker'
+        version: 'latest'
+        type: 'image'
+        target: 'nginx'
+        scanners: 'secret, vuln'
+        ignoreUnfixed: true
+        ignoreScanErrors: true
+        reports: 'github, junit, sarif'
+
