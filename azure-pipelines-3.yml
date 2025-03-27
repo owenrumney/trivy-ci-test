@@ -9,3 +9,4 @@ jobs:
   - task: trivy-dev@1
     inputs:
       version: 'latest'
+      image: 'nginx'
