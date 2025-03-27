@@ -38,7 +38,7 @@ jobs:
         version: 'latest'
         type: 'image'
         target: 'nginx'
-        scanners: 'secret, vuln'
+        scanners: 'secret,vuln'
         ignoreUnfixed: true
         ignoreScanErrors: true
         reports: 'github, junit, sarif'
