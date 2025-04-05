@@ -9,4 +9,5 @@ jobs:
     inputs:
       version: 'latest'
       type: repo
+      docker: false
       path: 'https://github.com/owenrumney/lazytrivy'
