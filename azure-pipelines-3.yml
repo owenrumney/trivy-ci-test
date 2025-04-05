@@ -13,3 +13,9 @@ jobs:
       path: 'https://github.com/owenrumney/trivy-bad'
     env:
       GITHUB_TOKEN: $(GITHUB_TOKEN)
+
+  - task: trivy-dev@1
+    inputs:
+      docker: false
+      path: .
+      
