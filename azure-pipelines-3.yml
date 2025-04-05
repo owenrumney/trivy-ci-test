@@ -3,7 +3,8 @@ trigger: none
 
 
 jobs:
-- job: scan_local_project
+- job: scan_remote_project
+  displayName: "Scan remote repo"
   steps:
   - task: trivy-dev@1
     inputs:
@@ -14,6 +15,9 @@ jobs:
     env:
       GITHUB_TOKEN: $(GITHUB_TOKEN)
 
+- job: scan_local_project
+  displayName: "Local project scan"
+  steps:
   - task: trivy-dev@1
     inputs:
       docker: false
