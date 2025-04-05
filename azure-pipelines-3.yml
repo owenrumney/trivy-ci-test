@@ -10,6 +10,6 @@ jobs:
       docker: false
       version: 'latest'
       type: 'repo'
-      path: 'https://github.com/owenrumney/lazytrivy'
+      path: 'https://github.com/owenrumney/trivy-bad'
     env:
       GITHUB_TOKEN: ${GITHUB_TOKEN}
