@@ -7,7 +7,7 @@ jobs:
   steps:
   - task: trivy-dev@1
     inputs:
-      version: 'latest'
-      type: repo
       docker: false
+      version: 'latest'
+      type: 'repo'
       path: 'https://github.com/owenrumney/lazytrivy'
