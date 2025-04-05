@@ -11,3 +11,5 @@ jobs:
       version: 'latest'
       type: 'repo'
       path: 'https://github.com/owenrumney/lazytrivy'
+    env:
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
