@@ -12,4 +12,4 @@ jobs:
       type: 'repo'
       path: 'https://github.com/owenrumney/trivy-bad'
     env:
-      GITHUB_TOKEN: ${GITHUB_TOKEN}
+      GITHUB_TOKEN: ${{ variables.GITHUB_TOKEN }}
