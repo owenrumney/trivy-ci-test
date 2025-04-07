@@ -31,12 +31,13 @@ jobs:
   steps:
   - task: trivy-dev@2
     inputs:
-        method: 'docker'
-        version: 'latest'
-        type: 'image'
-        target: 'nginx'
-        scanners: 'secret,vuln'
+        method: 'install'
+        type: 'repo'
+        target: 'https://github.com/owenrumney/trivy-bad'
+        scanners: 'secret,vuln,misconfig'
         ignoreUnfixed: true
         ignoreScanErrors: true
         reports: 'github, junit, sarif'
+    env:
+      GITHUB_TOKEN: $(GITHUB_TOKEN)
 
