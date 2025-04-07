@@ -16,7 +16,6 @@ jobs:
     inputs:
       aquaPlatform: 'Aqua Platform Connection'
       version: 'latest'
-      options: '--image-src=docker'
       type: 'image'
       target: 'nginx'
       scanners: 'misconfig, vuln'
