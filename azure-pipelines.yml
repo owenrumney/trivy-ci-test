@@ -12,23 +12,21 @@ variables:
   SYSTEM_DEBUG: true
 
 jobs:
-# - job: scan_multiple
-#   steps:
-#   - task: trivy-dev@1
-#     name: scan_hello_world
-#     displayName: Scan Hello World
-#     inputs:
-#       version: 'latest'
-#       image: 'hello-world'
-#       sarifOutput: true
-#       spdxjsonOutput: true
-#   - task: trivy-dev@1
-#     name: scan_nginx
-#     displayName: Scan NGINX
-#     inputs:
-#       version: 'latest'
-#       image: 'nginx'
-#       sarifOutput: true
+- job: scan_nginx
+  steps:
+  - task: trivy-dev@2
+    inputs:
+      method: 'docker'
+      version: 'latest'
+      type: 'Image'
+      target: 'nginx'
+      scanners: 'misconfig, vuln'
+      ignoreUnfixed: true
+      ignoreScanErrors: true
+      reports: 'github, html, junit'
+      publish: true
+
+
 
 - job: use_binary
   steps:
