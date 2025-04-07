@@ -6,8 +6,6 @@
 # set the trigger to none so that it only runs manually
 trigger: none
 
-pool: Linux
-
 variables:
   SYSTEM_DEBUG: true
 
