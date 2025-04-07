@@ -16,9 +16,9 @@ jobs:
     inputs:
       aquaPlatform: 'Aqua Platform Connection'
       version: 'latest'
-      type: 'image'
-      target: 'nginx'
-      scanners: 'misconfig, vuln'
+      type: 'filesystem'
+      target: '.'
+      scanners: 'misconfig,vuln,secret'
       ignoreUnfixed: true
       ignoreScanErrors: true
       reports: 'github, html, junit'
