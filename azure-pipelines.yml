@@ -15,7 +15,6 @@ jobs:
   - task: trivy-dev@2
     inputs:
       aquaPlatform: 'Aqua Platform Connection'
-      method: 'docker'
       version: 'latest'
       options: '--image-src=docker'
       type: 'image'
