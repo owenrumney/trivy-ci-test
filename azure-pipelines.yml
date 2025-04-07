@@ -16,7 +16,7 @@ jobs:
     inputs:
       method: 'docker'
       version: 'latest'
-      type: 'Image'
+      type: 'image'
       target: 'nginx'
       scanners: 'misconfig, vuln'
       ignoreUnfixed: true
