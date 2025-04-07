@@ -17,7 +17,7 @@ jobs:
       aquaPlatform: 'Aqua Platform Connection'
       method: 'docker'
       version: 'latest'
-      options: '--image-src docker'
+      options: '--image-src=docker'
       type: 'image'
       target: 'nginx'
       scanners: 'misconfig, vuln'
@@ -28,17 +28,17 @@ jobs:
 
 
 
-- job: use_binary
-  steps:
-  - task: trivy-dev@2
-    inputs:
-        method: 'install'
-        type: 'repo'
-        target: 'https://github.com/owenrumney/trivy-bad'
-        scanners: 'secret,vuln,misconfig'
-        ignoreUnfixed: true
-        ignoreScanErrors: true
-        reports: 'github, junit, sarif'
-    env:
-      GITHUB_TOKEN: $(GITHUB_TOKEN)
+# - job: use_binary
+#   steps:
+#   - task: trivy-dev@2
+#     inputs:
+#         method: 'install'
+#         type: 'repo'
+#         target: 'https://github.com/owenrumney/trivy-bad'
+#         scanners: 'secret,vuln,misconfig'
+#         ignoreUnfixed: true
+#         ignoreScanErrors: true
+#         reports: 'github, junit, sarif'
+#     env:
+#       GITHUB_TOKEN: $(GITHUB_TOKEN)
 
