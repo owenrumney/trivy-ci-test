@@ -9,20 +9,21 @@ trigger: none
 variables:
   SYSTEM_DEBUG: true
 
+
 jobs:
-- job: scan_nginx
+- job: clone_then_scan
   steps:
-  - task: trivy-dev@2
+  - script: |
+        git clone https://github.com/MicrosoftCSUDevAdvUK/real_deal.git
+    displayName: 'Clone to temp dir'
+    workingDirectory: $(Agent.TempDirectory)
+  - task: trivy-dev@1
     inputs:
-      aquaPlatform: 'Aqua Platform Connection'
-      version: 'latest'
-      type: 'filesystem'
-      target: '.'
-      scanners: 'misconfig,vuln,secret'
-      ignoreUnfixed: true
-      ignoreScanErrors: true
-      reports: 'github, html, junit'
-      publish: true
+      docker: false
+      path: $(Agent.TempDirectory)/real_deal
+      exitCode: 0
+      scanners: 'vuln,misconfig,secret,license'
+
 
 
 
