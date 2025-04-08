@@ -23,6 +23,12 @@ jobs:
       path: $(Agent.TempDirectory)/real_deal/assets/css
       exitCode: 0
       scanners: 'vuln,misconfig,secret,license'
+  - task: trivy-dev@1
+    inputs:
+      docker: false
+      type: repository
+      path: https://github.com/MicrosoftCSUDevAdvUK/real_deal.git
+      scanners: 'vuln,misconfig,secret,license'
 
 
 
