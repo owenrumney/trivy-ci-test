@@ -21,7 +21,7 @@ jobs:
   - task: trivy-dev@1
     inputs:
       docker: false
-      path: $(Agent.TempDirectory)/real_deal
+      path: $(Agent.TempDirectory)/trivy-bad
       exitCode: 0
       scanners: 'vuln,misconfig,secret,license'
   # - task: trivy-dev@1
