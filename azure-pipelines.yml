@@ -14,9 +14,10 @@ jobs:
 - job: clone_then_scan
   steps:
   - script: |
-        git clone https://github.com/MicrosoftCSUDevAdvUK/real_deal.git
+        git clone https://x-access-token:$(GITHUB_TOKEN)@github.com/owenrumney/trivy-bad.git
     displayName: 'Clone to temp dir'
     workingDirectory: $(Agent.TempDirectory)
+    
   - task: trivy-dev@1
     inputs:
       docker: false
