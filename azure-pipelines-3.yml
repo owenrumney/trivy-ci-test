@@ -19,15 +19,16 @@ jobs:
       docker: false
       version: 'latest'
       type: 'repo'
-      path: 'https://github.com/owenrumney/trivy-bad'
+      cyclonedxOutput: true
     env:
       GITHUB_TOKEN: $(GITHUB_TOKEN)
 
-- job: scan_local_project
-  displayName: "Local project scan"
+- job: scan_sbom
+  displayName: "Scan repo sbom"
   steps:
-  - task: trivy-dev@1
-    inputs:
-      docker: false
-      path: .
-      
+    - task: trivy-dev@2
+      inputs:
+        type: sbom
+        
+        
+
