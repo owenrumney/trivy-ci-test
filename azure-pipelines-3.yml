@@ -14,7 +14,7 @@ jobs:
   - task: trivy-dev@2
     inputs:
       type: sbom
-      target: $(scan_image.spdxJsonReport)
+      target: $(scan_image.spdxjsonReport)
         
         
 
