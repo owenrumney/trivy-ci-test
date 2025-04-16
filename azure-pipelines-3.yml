@@ -11,13 +11,13 @@ jobs:
       version: 'latest'
       type: 'image'
       target: 'nginx'
-      reports: 'spdx, spdxjson'
+      reports: 'cyclonedx'
     continueOnError: true
 
   - task: trivy-dev@2
     inputs:
       type: sbom
-      target: $(scanImage.spdxjsonReport)
+      target: $(scanImage.cyclonedxReport)
   
         
         
