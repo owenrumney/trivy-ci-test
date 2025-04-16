@@ -10,11 +10,13 @@ jobs:
       image: 'nginx'
       version: 'latest'
       spdxjsonOutput: true
+    continueOnError: true
 
   - task: trivy-dev@2
     inputs:
       type: sbom
       target: $(scan_image.spdxjsonReport)
+  
         
         
 
