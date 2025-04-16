@@ -6,6 +6,7 @@ jobs:
 - job: scan_image
   steps:
   - task: trivy-dev@2
+    name: scanImage
     inputs:
       version: 'latest'
       type: 'image'
@@ -16,7 +17,7 @@ jobs:
   - task: trivy-dev@2
     inputs:
       type: sbom
-      target: $(scan_image.spdxjsonReport)
+      target: $(scanImage.outputs.spdxjsonReport)
   
         
         
