@@ -15,6 +15,7 @@ jobs:
     continueOnError: true
 
   - task: trivy-dev@2
+    displayName:  "Process SBOM"
     inputs:
       version: 'latest'
       type: 'sbom'
