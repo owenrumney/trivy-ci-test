@@ -7,6 +7,7 @@ jobs:
   steps:
   - task: trivy-dev@1
     inputs:
+      image: 'nginx'
       version: 'latest'
       spdxjsonOutput: true
 
