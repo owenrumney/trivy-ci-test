@@ -8,27 +8,12 @@ jobs:
   - task: trivy-dev@1
     inputs:
       version: 'latest'
-      sarifOutput: true
       spdxjsonOutput: true
 
-- job: scan_remote_project
-  displayName: "Scan remote repo"
-  steps:
-  - task: trivy-dev@1
+  - task: trivy-dev@2
     inputs:
-      docker: false
-      version: 'latest'
-      type: 'repo'
-      cyclonedxOutput: true
-    env:
-      GITHUB_TOKEN: $(GITHUB_TOKEN)
-
-- job: scan_sbom
-  displayName: "Scan repo sbom"
-  steps:
-    - task: trivy-dev@2
-      inputs:
-        type: sbom
+      type: sbom
+      target: $(scan_image.spdxJsonReport)
         
         
 
