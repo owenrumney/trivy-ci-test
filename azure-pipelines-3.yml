@@ -5,11 +5,12 @@ trigger: none
 jobs:
 - job: scan_image
   steps:
-  - task: trivy-dev@1
+  - task: trivy-dev@2
     inputs:
-      image: 'nginx'
       version: 'latest'
-      spdxjsonOutput: true
+      type: 'image'
+      target: 'nginx'
+      reports: 'spdx, spdxjson'
     continueOnError: true
 
   - task: trivy-dev@2
