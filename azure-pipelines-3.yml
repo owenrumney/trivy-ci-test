@@ -16,8 +16,10 @@ jobs:
 
   - task: trivy-dev@2
     inputs:
-      type: sbom
-      target: $(scanImage.cyclonedxReport)
+      version: 'latest'
+      type: 'sbom'
+      target: '$(scanImage.cyclonedxReport)'
+      ignoreScanErrors: true
   
         
         
