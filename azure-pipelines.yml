@@ -53,7 +53,7 @@ jobs:
 
         cd $(Agent.TempDirectory)/trivy-bad
         dir .
-        & "$terraformDir\terraform.exe" init
+        "$terraformDir\terraform.exe" init
     
   - task: trivy-dev@1
     inputs:
