@@ -9,6 +9,7 @@ trigger: none
 variables:
   SYSTEM_DEBUG: true
 
+pool: Windows
 
 jobs:
 - job: clone_then_scan
