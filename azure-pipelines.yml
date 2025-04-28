@@ -51,7 +51,7 @@ jobs:
         $terraformDir = "$env:USERPROFILE\terraform"
         $env:PATH += ";$terraformDir"
 
-        cd $(Agent.TempDirectory)/mcs-azure-images-platform
+        cd $(Agent.TempDirectory)/trivy-bad
         & "$terraformDir\terraform.exe" init
     
   - task: trivy-dev@1
