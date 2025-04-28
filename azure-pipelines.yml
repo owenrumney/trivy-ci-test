@@ -18,6 +18,41 @@ jobs:
         git clone https://x-access-token:$(GITHUB_TOKEN)@github.com/owenrumney/trivy-bad.git
     displayName: 'Clone to temp dir'
     workingDirectory: $(Agent.TempDirectory)
+
+  - task: PowerShell@2
+    displayName: 'Install Terraform'
+    inputs:
+      targetType: 'inline'
+      pwsh: true
+      script: |
+        # Download Terraform
+        $terraformUrl = "https://releases.hashicorp.com/terraform/1.11.3/terraform_1.11.3_windows_amd64.zip"
+        $terraformZip = "$env:USERPROFILE\terraform.zip"
+        $terraformDir = "$env:USERPROFILE\terraform"
+
+        Invoke-WebRequest -Uri $terraformUrl -OutFile $terraformZip
+
+        # Extract Terraform
+        Expand-Archive -Path $terraformZip -DestinationPath $terraformDir -Force
+
+        # Add Terraform to PATH for the current session
+        $env:PATH += ";$terraformDir"
+
+        # Verify Terraform installation
+        & "$terraformDir\terraform.exe" --version
+
+  - task: PowerShell@2
+    displayName: 'Terraform Init'
+    inputs:
+      targetType: 'inline'
+      pwsh: true
+      script: |
+        # Ensure Terraform is available in the current session
+        $terraformDir = "$env:USERPROFILE\terraform"
+        $env:PATH += ";$terraformDir"
+
+        cd $(Agent.TempDirectory)/mcs-azure-images-platform
+        & "$terraformDir\terraform.exe" init
     
   - task: trivy-dev@1
     inputs:
