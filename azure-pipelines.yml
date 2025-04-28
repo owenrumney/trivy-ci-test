@@ -52,6 +52,7 @@ jobs:
         $env:PATH += ";$terraformDir"
 
         cd $(Agent.TempDirectory)/trivy-bad
+        dir .
         & "$terraformDir\terraform.exe" init
     
   - task: trivy-dev@1
