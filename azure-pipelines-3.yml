@@ -12,7 +12,6 @@ jobs:
       type: 'filesystem'
       target: '.'
       scanners: 'misconfig, vuln'
-      showSuppressed: true
       ignoreScanErrors: true
 
   
