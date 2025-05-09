@@ -1,5 +1,7 @@
 misconfigurations:
   - id: DS026
+    statement: This is a non issue so won't afffect us
 
 vulnerabilities:
   - id: CVE-2016-10931
+    statement: Code doesn't follow this path
