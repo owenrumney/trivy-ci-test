@@ -6,21 +6,14 @@ jobs:
 - job: scan_image
   steps:
   - task: trivy-dev@2
-    name: scanImage
     inputs:
       version: 'latest'
-      type: 'image'
-      target: 'nginx'
-      reports: 'cyclonedx'
-    continueOnError: true
-
-  - task: trivy-dev@2
-    displayName:  "Process SBOM"
-    inputs:
-      version: 'latest'
-      type: 'sbom'
-      target: '$(scanImage.cyclonedxReport)'
+      options: '--ignorefile .trivyignore.yaml'
+      type: 'filesystem'
+      target: '.'
+      scanners: 'misconfig, vuln'
       ignoreScanErrors: true
+
   
         
         
