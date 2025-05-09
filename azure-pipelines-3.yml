@@ -8,10 +8,11 @@ jobs:
   - task: trivy-dev@2
     inputs:
       version: 'latest'
-      options: '--ignorefile .trivyignore.yaml --show-suppressed'
+      options: '--ignorefile .trivyignore.yaml'
       type: 'filesystem'
       target: '.'
       scanners: 'misconfig, vuln'
+      showSuppressed: true
       ignoreScanErrors: true
 
   
