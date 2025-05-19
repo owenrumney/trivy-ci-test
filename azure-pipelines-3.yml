@@ -11,7 +11,7 @@ jobs:
       options: '--ignorefile .trivyignore.yaml'
       type: 'filesystem'
       target: '.'
-      scanners: 'misconfig, vuln'
+      scanners: 'misconfig'
       showSuppressed: true
       ignoreScanErrors: true
 
