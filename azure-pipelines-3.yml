@@ -13,7 +13,7 @@ jobs:
       scanners: 'misconfig, secret, vuln'
       showSuppressed: true
       ignoreScanErrors: true
-      failOnSeverityLevel: 'MEDIUM'
+      failOnSeverityThreshold: 'MEDIUM'
   
         
         
