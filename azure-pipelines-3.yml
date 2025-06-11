@@ -12,7 +12,7 @@ jobs:
       target: '.'
       scanners: 'misconfig'
       showSuppressed: true
-      ignoreScanErrors: true
+
 
 
 
