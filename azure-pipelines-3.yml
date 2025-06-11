@@ -8,14 +8,12 @@ jobs:
   - task: trivy-dev@2
     inputs:
       version: 'latest'
-      options: '--ignorefile .trivyignore.yaml'
       type: 'filesystem'
       target: '.'
       scanners: 'misconfig'
       showSuppressed: true
       ignoreScanErrors: true
-      failOnSeverityLevel: 'HIGH'
-
+      failOnSeverityLevel: 'MEDIUM'
   
         
         
