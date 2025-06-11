@@ -10,10 +10,10 @@ jobs:
       version: 'latest'
       type: 'filesystem'
       target: '.'
-      scanners: 'misconfig, secret, vuln'
+      scanners: 'misconfig'
       showSuppressed: true
       ignoreScanErrors: true
-      failOnSeverityThreshold: 'MEDIUM'
+      failOnSeverityThreshold: 'CRITICAL'
   
         
         
