@@ -13,6 +13,6 @@ jobs:
       scanners: 'misconfig'
       showSuppressed: true
       ignoreScanErrors: true
-      failOnSeverityThreshold: 'CRITICAL'
+      failOnSeverityThreshold: 'HIGH'
 
 
