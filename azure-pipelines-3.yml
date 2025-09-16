@@ -13,27 +13,5 @@ jobs:
       scanners: 'misconfig'
       showSuppressed: true
       failOnSeverityThreshold: 'CRITICAL'
+      reports: table
 
-- job: process_report
-  dependsOn: scan_image
-  steps:
-  - task: PowerShell@2
-    inputs:
-      targetType: 'inline'
-      script: |
-        Write-Host "Reading Trivy jsonReport from previous job..."
-        $json = '$(dependencies.scan_image.outputs["trivyStep.jsonReport"])'
-
-        # If it's valid JSON, parse it
-        try {
-          $report = $json | ConvertFrom-Json -ErrorAction Stop
-          Write-Host "Parsed JSON successfully."
-
-          foreach ($result in $report.Results) {
-            Write-Host "Target: $($result.Target)"
-            Write-Host "Misconfig count: $($result.Misconfigurations.Count)"
-          }
-        } catch {
-          Write-Warning "Could not parse jsonReport as JSON. Raw output:"
-          Write-Output $json
-        }
