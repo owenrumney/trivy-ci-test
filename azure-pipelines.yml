@@ -55,33 +55,33 @@ jobs:
         dir .
         & "$terraformDir\terraform.exe" init
     
-  - task: trivy-dev@1
-    inputs:
-      docker: false
-      path: $(Agent.TempDirectory)/trivy-bad
-      exitCode: 0
-      scanners: 'vuln,misconfig,secret,license'
   # - task: trivy-dev@1
   #   inputs:
   #     docker: false
-  #     type: repository
-  #     path: https://github.com/MicrosoftCSUDevAdvUK/real_deal.git
+  #     path: $(Agent.TempDirectory)/trivy-bad
+  #     exitCode: 0
   #     scanners: 'vuln,misconfig,secret,license'
+  # # - task: trivy-dev@1
+  # #   inputs:
+  # #     docker: false
+  # #     type: repository
+  # #     path: https://github.com/MicrosoftCSUDevAdvUK/real_deal.git
+  # #     scanners: 'vuln,misconfig,secret,license'
 
 
 
 
-# - job: use_binary
-#   steps:
-#   - task: trivy-dev@2
-#     inputs:
-#         method: 'install'
-#         type: 'repo'
-#         target: 'https://github.com/owenrumney/trivy-bad'
-#         scanners: 'secret,vuln,misconfig'
-#         ignoreUnfixed: true
-#         ignoreScanErrors: true
-#         reports: 'github, junit, sarif'
-#     env:
-#       GITHUB_TOKEN: $(GITHUB_TOKEN)
+- job: use_binary
+  steps:
+  - task: trivy-dev@2
+    inputs:
+        method: 'install'
+        type: 'repo'
+        target: 'https://github.com/owenrumney/trivy-bad'
+        scanners: 'secret,vuln,misconfig'
+        ignoreUnfixed: true
+        ignoreScanErrors: true
+        # reports: 'github, junit, sarif'
+    env:
+      GITHUB_TOKEN: $(GITHUB_TOKEN)
 
