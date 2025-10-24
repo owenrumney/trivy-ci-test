@@ -66,10 +66,11 @@ stages:
 
                     docker pull $registry/$repo/$name:$tag
 
-            - task: trivy@1
+            - task: trivy-dev@1
               displayName: Container Scan ${{ value.name }}
               continueOnError: true
               inputs:
                 version: 'latest'
                 image: '${{ value.registry}}/${{ value.repo }}/${{ value.name }}:${{ value.tag }}'
                 severities: 'CRITICAL,HIGH' 
+                trivyUrl: https://github.com/aquasecurity/trivy/releases/download/v0.67.2/trivy_0.67.2_Linux-64bit.tar.gz
