@@ -5,9 +5,6 @@
 
 trigger: none
 
-
-pool: Linux 
-
 parameters:
   - name: images
     type: object
