@@ -68,6 +68,7 @@ stages:
               continueOnError: true
               inputs:
                 docker: false
+                image: ${{ value.name }}
                 trivyUrl: 'https://github.com/aquasecurity/trivy/releases/download/v0.67.2/trivy_0.67.2_Linux-64bit.tar.gz'
                 version: 'latest'
                 severities: 'CRITICAL,HIGH'
