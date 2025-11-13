@@ -24,4 +24,14 @@ jobs:
       showSuppressed: true
       failOnSeverityThreshold: 'CRITICAL'
       trivyUrl: https://get.trivy.dev/trivy?os=linux&arch=amd64
-      reports: table
+      reports: junit
+      publish: true
+
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFormat: 'JUnit'
+      testResultsFiles: |
+        $(trivy_${{ parameters.platform }}.junitReport)
+      searchFolder: '$(Agent.TempDirectory)'
+      testRunTitle: 'Trivy'
+      publishRunAttachments: false
