@@ -9,8 +9,7 @@ trigger:
 parameters:
   - name: platform
     type: string
-    default:
-    - linux
+    default: linux
 
 jobs:
 - job: scan_image
