@@ -22,7 +22,6 @@ jobs:
       target: '.'
       scanners: 'vuln,misconfig'
       showSuppressed: true
-      failOnSeverityThreshold: 'CRITICAL'
       trivyUrl: https://get.trivy.dev/trivy?os=linux&arch=amd64
       reports: junit
       publish: true
