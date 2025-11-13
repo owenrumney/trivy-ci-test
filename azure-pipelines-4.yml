@@ -28,6 +28,7 @@ jobs:
       publish: true
 
   - task: PublishTestResults@2
+    condition: always()
     inputs:
       testResultsFormat: 'JUnit'
       testResultsFiles: |
