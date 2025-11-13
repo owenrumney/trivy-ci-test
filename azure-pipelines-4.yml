@@ -1,0 +1,28 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+parameters:
+  - name: platform
+    type: string
+    default:
+    - linux
+
+jobs:
+- job: scan_image
+  steps:
+  - task: trivy-dev@2
+    name: 'trivy_${{ parameters.platform }}'
+    inputs:
+      version: 'latest'
+      type: 'filesystem'
+      target: '.'
+      scanners: 'vuln,misconfig'
+      showSuppressed: true
+      failOnSeverityThreshold: 'CRITICAL'
+      trivyUrl: https://get.trivy.dev/trivy?os=linux&arch=amd64
+      reports: table
