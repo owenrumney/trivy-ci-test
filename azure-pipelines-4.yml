@@ -23,15 +23,23 @@ jobs:
       scanners: 'vuln,misconfig'
       showSuppressed: true
       trivyUrl: https://get.trivy.dev/trivy?os=linux&arch=amd64
-      reports: junit
+      reports: cyclonedx
       publish: true
 
-  - task: PublishTestResults@2
-    condition: always()
+  - task: Bash@3
+    displayName: "Print Trivy CycloneDX report"
+    condition: always()    # ensures it runs even if Trivy failed
     inputs:
-      testResultsFormat: 'JUnit'
-      testResultsFiles: |
-        $(trivy_${{ parameters.platform }}.junitReport)
-      searchFolder: '$(Agent.TempDirectory)'
-      testRunTitle: 'Trivy'
-      publishRunAttachments: false
+      targetType: 'inline'
+      script: |
+        echo "🔍 Checking Trivy CycloneDX report variable..."
+        echo "Report path: $(trivy_${{ parameters.platform }}.cyclonedxReport)"
+        echo ""
+
+        if [ -f "$(trivy_${{ parameters.platform }}.cyclonedxReport)" ]; then
+          echo "------ 📄 CycloneDX Report Contents ------"
+          cat "$(trivy_${{ parameters.platform }}.cyclonedxReport)"
+          echo "-----------------------------------------"
+        else
+          echo "⚠️ File not found at path: $(trivy_${{ parameters.platform }}.cyclonedxReport)"
+        fi
