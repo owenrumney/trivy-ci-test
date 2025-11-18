@@ -17,19 +17,32 @@ parameters:
 jobs:
 - job: scan_image
   steps:
-  - task: trivy-dev@2
-    name: 'trivy_${{ parameters.platform }}'
+
+  - task: trivy-dev@1
     inputs:
+      docker: false
       trivyUrl: 'https://localhost:8443/trivy_0.67.2_Linux-64bit.tar.gz'
       version: '0.67.2'
       type: 'filesystem'
-      target: '.'
+      path: '.,'
       scanners: 'vuln,misconfig'
-      showSuppressed: true
-      reports: 'cyclonedx'
-      publish: true
+      cyclonedxOutput: true
     env:
       NODE_EXTRA_CA_CERTS: /home/owen/local-repo/rootCA.pem
+
+  # - task: trivy-dev@2
+  #   name: 'trivy_${{ parameters.platform }}'
+  #   inputs:
+  #     trivyUrl: 'https://localhost:8443/trivy_0.67.2_Linux-64bit.tar.gz'
+  #     version: '0.67.2'
+  #     type: 'filesystem'
+  #     target: '.'
+  #     scanners: 'vuln,misconfig'
+  #     showSuppressed: true
+  #     reports: 'cyclonedx'
+  #     publish: true
+  #   env:
+  #     NODE_EXTRA_CA_CERTS: /home/owen/local-repo/rootCA.pem
 
   # - task: Bash@3
   #   displayName: "Print Trivy CycloneDX report"
