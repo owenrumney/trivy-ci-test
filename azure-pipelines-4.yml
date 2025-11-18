@@ -26,7 +26,6 @@ jobs:
       scanners: 'vuln,misconfig'
       showSuppressed: true
       trivyUrl: https://localhost:8443/trivy_0.67.2_Linux-64bit.tar.gz
-      customCaCertPath: /home/owen/local-repo/rootCA.pem
       reports: cyclonedx
       publish: true
     env:
