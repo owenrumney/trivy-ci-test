@@ -25,24 +25,25 @@ jobs:
       target: '.'
       scanners: 'vuln,misconfig'
       showSuppressed: true
-      trivyUrl: https://get.trivy.dev/trivy?os=linux&arch=amd64
+      trivyUrl: https://localhost:8443/trivy_0.67.2_Linux-64bit.tar.gz
+      customCaCertPath: /home/owen/local-repo/rootCA.pem
       reports: cyclonedx
       publish: true
 
-  - task: Bash@3
-    displayName: "Print Trivy CycloneDX report"
-    condition: always()    # ensures it runs even if Trivy failed
-    inputs:
-      targetType: 'inline'
-      script: |
-        echo "🔍 Checking Trivy CycloneDX report variable..."
-        echo "Report path: $(trivy_${{ parameters.platform }}.cyclonedxReport)"
-        echo ""
+  # - task: Bash@3
+  #   displayName: "Print Trivy CycloneDX report"
+  #   condition: always()    # ensures it runs even if Trivy failed
+  #   inputs:
+  #     targetType: 'inline'
+  #     script: |
+  #       echo "🔍 Checking Trivy CycloneDX report variable..."
+  #       echo "Report path: $(trivy_${{ parameters.platform }}.cyclonedxReport)"
+  #       echo ""
 
-        if [ -f "$(trivy_${{ parameters.platform }}.cyclonedxReport)" ]; then
-          echo "------ 📄 CycloneDX Report Contents ------"
-          cat "$(trivy_${{ parameters.platform }}.cyclonedxReport)"
-          echo "-----------------------------------------"
-        else
-          echo "⚠️ File not found at path: $(trivy_${{ parameters.platform }}.cyclonedxReport)"
-        fi
+  #       if [ -f "$(trivy_${{ parameters.platform }}.cyclonedxReport)" ]; then
+  #         echo "------ 📄 CycloneDX Report Contents ------"
+  #         cat "$(trivy_${{ parameters.platform }}.cyclonedxReport)"
+  #         echo "-----------------------------------------"
+  #       else
+  #         echo "⚠️ File not found at path: $(trivy_${{ parameters.platform }}.cyclonedxReport)"
+  #       fi
