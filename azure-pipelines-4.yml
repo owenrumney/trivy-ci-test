@@ -28,7 +28,7 @@ jobs:
       scanners: 'vuln,misconfig'
       cyclonedxOutput: true
     env:
-      NODE_EXTRA_CA_CERTS: /home/owen/local-repo/
+      NODE_EXTRA_CA_CERTS: /home/owen/local-repo/rootCA.pem
 
   # - task: trivy-dev@2
   #   name: 'trivy_${{ parameters.platform }}'
