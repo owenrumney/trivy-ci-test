@@ -21,7 +21,7 @@ jobs:
     name: 'trivy_${{ parameters.platform }}'
     inputs:
       trivyUrl: 'https://localhost:8443/trivy_0.67.2_Linux-64bit.tar.gz'
-      version: 'latest'
+      version: '0.67.2'
       type: 'filesystem'
       target: '.'
       scanners: 'vuln,misconfig'
