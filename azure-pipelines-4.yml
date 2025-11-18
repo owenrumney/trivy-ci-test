@@ -24,7 +24,7 @@ jobs:
       trivyUrl: 'https://localhost:8443/trivy_0.67.2_Linux-64bit.tar.gz'
       version: '0.67.2'
       type: 'filesystem'
-      path: '.,'
+      path: '.'
       scanners: 'vuln,misconfig'
       cyclonedxOutput: true
     env:
