@@ -19,7 +19,7 @@ jobs:
   - task: trivy-dev@1
     inputs:
       docker: false
-      version: '0.67.2'
+      version: 'v0.67.2'
       type: 'filesystem'
       path: '.'
       scanners: 'vuln,misconfig'
