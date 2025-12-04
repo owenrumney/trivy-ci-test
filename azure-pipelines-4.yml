@@ -21,14 +21,11 @@ jobs:
   - task: trivy-dev@1
     inputs:
       docker: false
-      trivyUrl: 'https://localhost:8443/trivy_0.67.2_Linux-64bit.tar.gz'
       version: '0.67.2'
       type: 'filesystem'
       path: '.'
       scanners: 'vuln,misconfig'
       cyclonedxOutput: true
-    env:
-      NODE_EXTRA_CA_CERTS: /home/owen/local-repo/rootCA.pem
 
   # - task: trivy-dev@2
   #   name: 'trivy_${{ parameters.platform }}'
