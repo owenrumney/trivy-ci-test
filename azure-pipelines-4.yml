@@ -6,8 +6,6 @@
 trigger:
 - main
 
-pool:
-  name: Linux
 
 parameters:
   - name: platform
