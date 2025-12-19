@@ -27,6 +27,7 @@ jobs:
 
   - task: trivy-dev@2
     name: 'trivy_${{ parameters.platform }}'
+    condition: always()
     inputs:
       trivyUrl: 'https://localhost:8443/trivy_0.67.2_Linux-64bit.tar.gz'
       version: '0.67.2'
