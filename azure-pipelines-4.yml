@@ -20,8 +20,8 @@ jobs:
     inputs:
       docker: false
       version: 'v0.67.2'
-      type: 'filesystem'
-      path: '.'
+      type: 'image'
+      image: 'nginx:latest'
       scanners: 'vuln,misconfig'
       cyclonedxOutput: true
 
